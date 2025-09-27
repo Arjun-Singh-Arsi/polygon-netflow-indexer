@@ -1,0 +1,25 @@
+[package]
+name = "polygon-netflow-indexer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Async Runtime
+tokio = { version = "1", features = ["full"] }
+
+# Blockchain interaction
+ethers = { version = "2.0.14", features = ["ws", "rustls"] } 
+
+# Database
+sqlx = { version = "0.7", features = ["runtime-tokio", "sqlite", "macros", "migrate"] }
+
+# Configuration and CLI
+dotenv = "0.15" 
+clap = { version = "4.4", features = ["derive"] } 
+eyre = "0.6" # Simple error handling
+log = "0.4"
+env_logger = "0.10"
+futures-util = "0.3" # For stream processing
+
+# --- FIX: Add Serde as a direct dependency for the abigen macro to use it ---
+serde = { version = "1.0", features = ["derive"] }
